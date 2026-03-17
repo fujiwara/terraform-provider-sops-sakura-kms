@@ -12,7 +12,7 @@ This provider embeds the [carlpett/sops](https://github.com/carlpett/terraform-p
 
 ## Authentication
 
-The provider supports the same authentication methods as [terraform-provider-sakuracloud](https://registry.terraform.io/providers/sacloud/sakuracloud/latest/docs). The priority order is: HCL attributes > environment variables > profile.
+The provider supports the same authentication methods as [terraform-provider-sakura](https://registry.terraform.io/providers/sacloud/sakura/latest/docs). The priority order is: HCL attributes > environment variables > profile.
 
 ### Environment variables
 
