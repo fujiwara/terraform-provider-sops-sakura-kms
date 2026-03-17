@@ -10,14 +10,37 @@ This provider embeds the [carlpett/sops](https://github.com/carlpett/terraform-p
 2. SOPS decryption runs in the same provider process, connecting to the in-process server
 3. Data sources (`sops_file`, `sops_external`) and ephemeral resources (`sops_file`) are provided directly
 
-## Prerequisites
+## Authentication
 
-Set the following environment variables:
+The provider supports the same authentication methods as [terraform-provider-sakuracloud](https://registry.terraform.io/providers/sacloud/sakuracloud/latest/docs). The priority order is: HCL attributes > environment variables > profile.
+
+### Environment variables
 
 ```bash
 export SAKURACLOUD_ACCESS_TOKEN="your-access-token"
 export SAKURACLOUD_ACCESS_TOKEN_SECRET="your-access-token-secret"
 ```
+
+### Provider attributes
+
+```hcl
+provider "sops" {
+  key_id = "123456789012"
+  token  = "your-access-token"
+  secret = "your-access-token-secret"
+}
+```
+
+### Profile
+
+```hcl
+provider "sops" {
+  key_id  = "123456789012"
+  profile = "your-profile"
+}
+```
+
+Profile reads credentials from `~/.usacloud/<profile>/config.json`.
 
 ## Usage
 
@@ -56,10 +79,21 @@ ephemeral "sops_file" "secrets" {
 
 ## Provider Configuration
 
-| Attribute     | Type   | Required | Default           | Description                                |
-|---------------|--------|----------|-------------------|--------------------------------------------|
-| `key_id`      | string | Yes      |                   | Sakura Cloud KMS resource ID (12-digit)    |
-| `server_addr` | string | No       | `127.0.0.1:8200`  | Address for the local Vault-compatible server |
+| Attribute                  | Type   | Required | Default           | Description                                              |
+|----------------------------|--------|----------|-------------------|----------------------------------------------------------|
+| `key_id`                   | string | Yes      |                   | Sakura Cloud KMS resource ID (12-digit)                  |
+| `server_addr`              | string | No       | `127.0.0.1:8200`  | Address for the local Vault-compatible server             |
+| `profile`                  | string | No       |                   | Profile name for shared credentials                       |
+| `token`                    | string | No       |                   | API access token                                          |
+| `secret`                   | string | No       |                   | API access token secret (sensitive)                       |
+| `service_principal_id`     | string | No       |                   | Service principal ID                                      |
+| `service_principal_key_id` | string | No       |                   | Service principal key ID                                  |
+| `private_key_path`         | string | No       |                   | Path to private key file for service principal auth       |
+| `api_root_url`             | string | No       |                   | Custom API root URL                                       |
+| `retry_max`                | number | No       |                   | Maximum number of API call retries                        |
+| `api_request_timeout`      | number | No       |                   | API request timeout in seconds                            |
+| `api_request_rate_limit`   | number | No       |                   | Maximum API calls per second                              |
+| `trace`                    | string | No       |                   | Enable API trace logging                                  |
 
 ## Data Sources
 
