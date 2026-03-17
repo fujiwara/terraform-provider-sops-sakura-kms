@@ -37,6 +37,10 @@ go test -race ./...
 - **Dependency injection**: `runServerFunc` field enables test isolation without real KMS calls.
 - **In-process server**: The Vault Transit-compatible server runs in the same process — no external service needed.
 
+## Registry Documentation
+
+Documentation for the Terraform Registry is in `docs/`. Since `tfplugindocs` cannot auto-generate docs for this provider (data sources are delegated from `carlpett/sops` with a different type name prefix), docs must be maintained manually. When adding or changing data sources, ephemeral resources, or provider schema, update the corresponding files in `docs/` as well.
+
 ## Provider Configuration
 
 Requires environment variables `SAKURACLOUD_ACCESS_TOKEN` and `SAKURACLOUD_ACCESS_TOKEN_SECRET` for real KMS operations.
