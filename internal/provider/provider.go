@@ -162,11 +162,11 @@ func (p *sskProvider) Schema(_ context.Context, _ provider.SchemaRequest, resp *
 				Optional:    true,
 			},
 			"token": schema.StringAttribute{
-				Description: "API access token. Can also be set via SAKURACLOUD_ACCESS_TOKEN environment variable.",
+				Description: "API access token. Can also be set via SAKURA_ACCESS_TOKEN environment variable.",
 				Optional:    true,
 			},
 			"secret": schema.StringAttribute{
-				Description: "API access token secret. Can also be set via SAKURACLOUD_ACCESS_TOKEN_SECRET environment variable.",
+				Description: "API access token secret. Can also be set via SAKURA_ACCESS_TOKEN_SECRET environment variable.",
 				Optional:    true,
 				Sensitive:   true,
 			},

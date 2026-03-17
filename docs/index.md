@@ -17,8 +17,8 @@ The provider supports the same authentication methods as [terraform-provider-sak
 ### Environment variables
 
 ```bash
-export SAKURACLOUD_ACCESS_TOKEN="your-access-token"
-export SAKURACLOUD_ACCESS_TOKEN_SECRET="your-access-token-secret"
+export SAKURA_ACCESS_TOKEN="your-access-token"
+export SAKURA_ACCESS_TOKEN_SECRET="your-access-token-secret"
 ```
 
 ### Provider attributes
@@ -77,8 +77,8 @@ output "secret_value" {
 
 - `server_addr` (String) - Address for the local Vault-compatible server. Defaults to `127.0.0.1:8200`.
 - `profile` (String) - Profile name for shared credentials (`~/.usacloud/<profile>/config.json`).
-- `token` (String) - API access token. Can also be set via `SAKURACLOUD_ACCESS_TOKEN` environment variable.
-- `secret` (String, Sensitive) - API access token secret. Can also be set via `SAKURACLOUD_ACCESS_TOKEN_SECRET` environment variable.
+- `token` (String) - API access token. Can also be set via `SAKURA_ACCESS_TOKEN` environment variable.
+- `secret` (String, Sensitive) - API access token secret. Can also be set via `SAKURA_ACCESS_TOKEN_SECRET` environment variable.
 - `service_principal_id` (String) - Service principal ID for authentication.
 - `service_principal_key_id` (String) - Service principal key ID for authentication.
 - `private_key_path` (String) - Path to the private key file for service principal authentication.

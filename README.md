@@ -17,8 +17,8 @@ The provider supports the same authentication methods as [terraform-provider-sak
 ### Environment variables
 
 ```bash
-export SAKURACLOUD_ACCESS_TOKEN="your-access-token"
-export SAKURACLOUD_ACCESS_TOKEN_SECRET="your-access-token-secret"
+export SAKURA_ACCESS_TOKEN="your-access-token"
+export SAKURA_ACCESS_TOKEN_SECRET="your-access-token-secret"
 ```
 
 ### Provider attributes
