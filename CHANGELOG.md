@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.0.5](https://github.com/fujiwara/terraform-provider-sops-sakura-kms/compare/v0.0.4...v0.0.5) - 2026-03-17
+- Add Terraform Registry documentation by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/7
+- Add Sakura Cloud authentication configuration by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/9
+
 ## [v0.0.4](https://github.com/fujiwara/terraform-provider-sops-sakura-kms/compare/v0.0.3...v0.0.4) - 2026-03-17
 - Fix manifest filename in release assets by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/5
 
