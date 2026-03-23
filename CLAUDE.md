@@ -39,7 +39,7 @@ go test -race ./...
 
 ## Registry Documentation
 
-Documentation for the Terraform Registry is in `docs/`. Since `tfplugindocs` cannot auto-generate docs for this provider (data sources are delegated from `carlpett/sops` with a different type name prefix), docs must be maintained manually. When adding or changing data sources, ephemeral resources, or provider schema, update the corresponding files in `docs/` as well.
+Documentation for the Terraform Registry is in `docs/`. Since `tfplugindocs` cannot auto-generate docs for this provider (data sources are delegated from `carlpett/sops` with a different type name prefix), docs must be maintained manually. When adding or changing data sources, ephemeral resources, or provider schema, update the corresponding files in `docs/` as well. Always keep `docs/` and `README.md` in sync — when updating one, update the other to match.
 
 ## Provider Configuration
 
