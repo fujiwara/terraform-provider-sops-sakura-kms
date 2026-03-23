@@ -46,5 +46,5 @@ Documentation for the Terraform Registry is in `docs/`. Since `tfplugindocs` can
 Requires environment variables `SAKURA_ACCESS_TOKEN` and `SAKURA_ACCESS_TOKEN_SECRET` for real KMS operations.
 
 Provider attributes:
-- `key_id` (required): 12-digit Sakura Cloud KMS resource ID
+- `key_id` (optional): 12-digit Sakura Cloud KMS resource ID. Not required for decryption (key ID is read from SOPS file metadata)
 - `server_addr` (optional, default `127.0.0.1:8200`): Address for local Vault-compatible server
