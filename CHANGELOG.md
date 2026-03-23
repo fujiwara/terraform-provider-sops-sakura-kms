@@ -4,6 +4,12 @@
 - Fix terraform-provider-sakuracloud references to terraform-provider-sakura by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/10
 - Make key_id optional and update sops-sakura-kms to v0.5.0 by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/12
 - Sync README.md with docs/ for key_id optional change by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/13
+- Release for v0.0.6 by @github-actions[bot] in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/11
+
+## [v0.0.6](https://github.com/fujiwara/terraform-provider-sops-sakura-kms/compare/v0.0.5...v0.0.6) - 2026-03-23
+- Fix terraform-provider-sakuracloud references to terraform-provider-sakura by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/10
+- Make key_id optional and update sops-sakura-kms to v0.5.0 by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/12
+- Sync README.md with docs/ for key_id optional change by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/13
 
 ## [v0.0.5](https://github.com/fujiwara/terraform-provider-sops-sakura-kms/compare/v0.0.4...v0.0.5) - 2026-03-17
 - Add Terraform Registry documentation by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/7
