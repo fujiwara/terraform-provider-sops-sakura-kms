@@ -1,5 +1,8 @@
 # Changelog
 
+## [v0.0.7](https://github.com/fujiwara/terraform-provider-sops-sakura-kms/compare/v0.0.6...v0.0.7) - 2026-03-23
+- Fix goreleaser deprecated archives.format by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/16
+
 ## [v0.0.6](https://github.com/fujiwara/terraform-provider-sops-sakura-kms/compare/v0.0.5...v0.0.6) - 2026-03-23
 - Fix terraform-provider-sakuracloud references to terraform-provider-sakura by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/10
 - Make key_id optional and update sops-sakura-kms to v0.5.0 by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/12
