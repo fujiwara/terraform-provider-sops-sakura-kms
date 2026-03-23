@@ -4,6 +4,8 @@ A Terraform provider for decrypting [SOPS](https://github.com/getsops/sops)-encr
 
 This provider embeds the [carlpett/sops](https://github.com/carlpett/terraform-provider-sops) data sources and starts a [sops-sakura-kms](https://github.com/fujiwara/sops-sakura-kms) Vault Transit compatible server in-process. No separate provider or background process is needed.
 
+SOPS files encrypted with non-Sakura Cloud KMS keys (e.g., AWS KMS, GCP KMS, Azure Key Vault, PGP) can also be decrypted without any Sakura Cloud credentials. SOPS resolves the appropriate key provider from the file metadata.
+
 ## How it works
 
 1. The provider starts a local Vault Transit Engine compatible HTTP server during `Configure`
@@ -12,7 +14,7 @@ This provider embeds the [carlpett/sops](https://github.com/carlpett/terraform-p
 
 ## Authentication
 
-The provider supports the same authentication methods as [terraform-provider-sakura](https://registry.terraform.io/providers/sacloud/sakura/latest/docs). The priority order is: HCL attributes > environment variables > profile.
+Sakura Cloud credentials are only required when decrypting files encrypted with Sakura Cloud KMS. The provider supports the same authentication methods as [terraform-provider-sakura](https://registry.terraform.io/providers/sacloud/sakura/latest/docs). The priority order is: HCL attributes > environment variables > profile.
 
 ### Environment variables
 
@@ -25,7 +27,6 @@ export SAKURA_ACCESS_TOKEN_SECRET="your-access-token-secret"
 
 ```hcl
 provider "sops" {
-  key_id = "123456789012"
   token  = "your-access-token"
   secret = "your-access-token-secret"
 }
@@ -35,7 +36,6 @@ provider "sops" {
 
 ```hcl
 provider "sops" {
-  key_id  = "123456789012"
   profile = "your-profile"
 }
 ```
@@ -54,7 +54,6 @@ terraform {
 }
 
 provider "sops" {
-  key_id = "123456789012"  # Sakura Cloud KMS resource ID
 }
 
 data "sops_file" "secrets" {
@@ -81,7 +80,7 @@ ephemeral "sops_file" "secrets" {
 
 | Attribute                  | Type   | Required | Default           | Description                                              |
 |----------------------------|--------|----------|-------------------|----------------------------------------------------------|
-| `key_id`                   | string | Yes      |                   | Sakura Cloud KMS resource ID (12-digit)                  |
+| `key_id`                   | string | No       |                   | Sakura Cloud KMS resource ID (12-digit). Not required for decryption (key ID is read from SOPS file metadata) |
 | `server_addr`              | string | No       | `127.0.0.1:8200`  | Address for the local Vault-compatible server             |
 | `profile`                  | string | No       |                   | Profile name for shared credentials                       |
 | `token`                    | string | No       |                   | API access token                                          |
