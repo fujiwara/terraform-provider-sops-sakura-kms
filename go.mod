@@ -4,7 +4,7 @@ go 1.26.1
 
 require (
 	github.com/carlpett/terraform-provider-sops v1.4.0
-	github.com/fujiwara/sops-sakura-kms v0.4.1
+	github.com/fujiwara/sops-sakura-kms v0.5.0
 	github.com/hashicorp/terraform-plugin-framework v1.19.0
 	github.com/hashicorp/terraform-plugin-go v0.31.0
 	github.com/sacloud/saclient-go v0.3.1

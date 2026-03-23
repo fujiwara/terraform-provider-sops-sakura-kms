@@ -150,8 +150,9 @@ func (p *sskProvider) Schema(_ context.Context, _ provider.SchemaRequest, resp *
 			"Starts a Vault Transit Engine compatible server and provides data sources for decrypting SOPS-encrypted files.",
 		Attributes: map[string]schema.Attribute{
 			"key_id": schema.StringAttribute{
-				Description: "Sakura Cloud KMS resource ID (12-digit number).",
-				Required:    true,
+				Description: "Sakura Cloud KMS resource ID (12-digit number). " +
+					"Optional: not required for decryption as key ID is read from SOPS file metadata.",
+				Optional: true,
 			},
 			"server_addr": schema.StringAttribute{
 				Description: "Address for the local Vault-compatible server. Defaults to 127.0.0.1:8200.",
@@ -213,7 +214,7 @@ func (p *sskProvider) Configure(ctx context.Context, req provider.ConfigureReque
 		return
 	}
 
-	keyID := config.KeyID.ValueString()
+	keyID, _ := lookupString(config.KeyID)
 	serverAddr := "127.0.0.1:8200"
 	if !config.ServerAddr.IsNull() && !config.ServerAddr.IsUnknown() {
 		serverAddr = config.ServerAddr.ValueString()
