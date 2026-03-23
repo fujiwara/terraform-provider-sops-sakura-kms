@@ -25,3 +25,9 @@ jobs:
       - name: Build binary
         run: |
           go build -o terraform-provider-sops-sakura-kms .
+
+      - name: Check goreleaser config
+        uses: goreleaser/goreleaser-action@e435ccd777264be153ace6237001ef4d979d3a7a # v6
+        with:
+          version: "~> 2"
+          args: check
