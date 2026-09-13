@@ -1,5 +1,8 @@
 # Changelog
 
+## [v0.0.8](https://github.com/fujiwara/terraform-provider-sops-sakura-kms/compare/v0.0.7...v0.0.8) - 2026-09-13
+- Update Go dependencies by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/19
+
 ## [v0.0.7](https://github.com/fujiwara/terraform-provider-sops-sakura-kms/compare/v0.0.6...v0.0.7) - 2026-05-15
 - Fix goreleaser deprecated archives.format by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/16
 - Update sops-sakura-kms to v0.5.1 and terraform-provider-sops to v1.4.1 by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/18
