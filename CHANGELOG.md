@@ -1,5 +1,8 @@
 # Changelog
 
+## [v0.0.9](https://github.com/fujiwara/terraform-provider-sops-sakura-kms/compare/v0.0.8...v0.0.9) - 2026-09-19
+- Rename CLAUDE.md to AGENTS.md by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/21
+
 ## [v0.0.8](https://github.com/fujiwara/terraform-provider-sops-sakura-kms/compare/v0.0.7...v0.0.8) - 2026-09-13
 - Update Go dependencies by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/19
 
