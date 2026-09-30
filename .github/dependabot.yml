@@ -8,10 +8,16 @@ updates:
       terraform-plugin:
         patterns:
           - "github.com/hashicorp/terraform-plugin-*"
-      indirect:
-        dependency-type: indirect
+      # Group the rest (mostly indirect dependencies from SOPS) into one PR.
+      # Direct dependencies below are excluded to be updated individually.
+      others:
         patterns:
           - "*"
+        exclude-patterns:
+          - "github.com/carlpett/terraform-provider-sops"
+          - "github.com/fujiwara/sops-sakura-kms"
+          - "github.com/sacloud/sacloud-sdk-go"
+          - "go.yaml.in/yaml/v3"
   - package-ecosystem: github-actions
     directory: "/"
     schedule:

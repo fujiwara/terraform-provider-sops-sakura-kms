@@ -41,6 +41,10 @@ go test -race ./...
 
 Documentation for the Terraform Registry is in `docs/`. Since `tfplugindocs` cannot auto-generate docs for this provider (data sources are delegated from `carlpett/sops` with a different type name prefix), docs must be maintained manually. When adding or changing data sources, ephemeral resources, or provider schema, update the corresponding files in `docs/` as well. Always keep `docs/` and `README.md` in sync — when updating one, update the other to match.
 
+## Dependabot
+
+`.github/dependabot.yml` groups all Go module updates into the `others` group except direct dependencies listed in its `exclude-patterns`, so that direct dependencies are updated in individual PRs. When adding a direct dependency to `go.mod`, also add it to `exclude-patterns` (or to a dedicated group such as `terraform-plugin`). When removing one, remove it from `exclude-patterns` as well. `dependabot_test.go` checks this consistency between `go.mod` and `.github/dependabot.yml`.
+
 ## Provider Configuration
 
 Requires environment variables `SAKURA_ACCESS_TOKEN` and `SAKURA_ACCESS_TOKEN_SECRET` for real KMS operations.
