@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.1.0](https://github.com/fujiwara/terraform-provider-sops-sakura-kms/compare/v0.0.8...v0.1.0) - 2026-09-30
+
+- Rename CLAUDE.md to AGENTS.md by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/21
+- Update sops-sakura-kms to v0.7.0 and listen on an ephemeral port by default by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/23
+- Add Dependabot configuration by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/24
+- Fix invalid Dependabot group config and test it against go.mod by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/25
+- Bump goreleaser/goreleaser-action from 6.4.0 to 7.2.3 by @dependabot[bot] in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/26
+- Bump Songmu/tagpr from 1.17.1 to 1.21.0 by @dependabot[bot] in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/27
+- Bump actions/checkout from 6.0.2 to 7.0.1 by @dependabot[bot] in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/28
+- Bump actions/setup-go from 6.3.0 to 7.0.0 by @dependabot[bot] in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/29
+- Fix version comments of pinned actions by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/30
+
 ## [v0.0.8](https://github.com/fujiwara/terraform-provider-sops-sakura-kms/compare/v0.0.7...v0.0.8) - 2026-09-13
 - Update Go dependencies by @fujiwara in https://github.com/fujiwara/terraform-provider-sops-sakura-kms/pull/19
 
