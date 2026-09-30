@@ -81,7 +81,7 @@ ephemeral "sops_file" "secrets" {
 | Attribute                  | Type   | Required | Default           | Description                                              |
 |----------------------------|--------|----------|-------------------|----------------------------------------------------------|
 | `key_id`                   | string | No       |                   | Sakura Cloud KMS resource ID (12-digit). Not required for decryption (key ID is read from SOPS file metadata) |
-| `server_addr`              | string | No       | `127.0.0.1:8200`  | Address for the local Vault-compatible server             |
+| `server_addr`              | string | No       | `127.0.0.1:0`     | Address for the local Vault-compatible server (port `0` means an ephemeral port) |
 | `profile`                  | string | No       |                   | Profile name for shared credentials                       |
 | `token`                    | string | No       |                   | API access token                                          |
 | `secret`                   | string | No       |                   | API access token secret (sensitive)                       |
@@ -93,6 +93,14 @@ ephemeral "sops_file" "secrets" {
 | `api_request_timeout`      | number | No       |                   | API request timeout in seconds                            |
 | `api_request_rate_limit`   | number | No       |                   | Maximum API calls per second                              |
 | `trace`                    | string | No       |                   | Enable API trace logging                                  |
+
+### Server Address
+
+By default, the provider starts the local Vault-compatible server on an ephemeral port of `127.0.0.1` (`server_addr = "127.0.0.1:0"`), so multiple Terraform processes can run on the same host at once. The provider sets `VAULT_AGENT_ADDR` to the actual listen address, and SOPS connects to it instead of the Vault address recorded in encrypted files. Files encrypted with `127.0.0.1:8200` (the address used by `sops-sakura-kms`) can be decrypted as before.
+
+If `server_addr` is set to a fixed port, the server listens on that address.
+
+**Note**: Since `VAULT_AGENT_ADDR` redirects all Vault requests in the provider process to the local server, this provider cannot decrypt files encrypted with a real HashiCorp Vault server.
 
 ## Data Sources
 

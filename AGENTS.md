@@ -47,4 +47,4 @@ Requires environment variables `SAKURA_ACCESS_TOKEN` and `SAKURA_ACCESS_TOKEN_SE
 
 Provider attributes:
 - `key_id` (optional): 12-digit Sakura Cloud KMS resource ID. Not required for decryption (key ID is read from SOPS file metadata)
-- `server_addr` (optional, default `127.0.0.1:8200`): Address for local Vault-compatible server
+- `server_addr` (optional, default `127.0.0.1:0`): Address for local Vault-compatible server. Port `0` listens on an ephemeral port; `VAULT_AGENT_ADDR` points SOPS to it while files are still encrypted with `127.0.0.1:8200`

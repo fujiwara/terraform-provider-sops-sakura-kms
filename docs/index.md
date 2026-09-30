@@ -71,7 +71,7 @@ output "secret_value" {
 ### Optional
 
 - `key_id` (String) - Sakura Cloud KMS resource ID (12-digit number). Optional: not required for decryption as key ID is read from SOPS file metadata. When set, `SOPS_VAULT_URIS` is configured automatically.
-- `server_addr` (String) - Address for the local Vault-compatible server. Defaults to `127.0.0.1:8200`.
+- `server_addr` (String) - Address for the local Vault-compatible server. Defaults to `127.0.0.1:0` (an ephemeral port on `127.0.0.1`).
 - `profile` (String) - Profile name for shared credentials (`~/.usacloud/<profile>/config.json`).
 - `token` (String) - API access token. Can also be set via `SAKURA_ACCESS_TOKEN` environment variable.
 - `secret` (String, Sensitive) - API access token secret. Can also be set via `SAKURA_ACCESS_TOKEN_SECRET` environment variable.
@@ -83,3 +83,11 @@ output "secret_value" {
 - `api_request_timeout` (Number) - API request timeout in seconds.
 - `api_request_rate_limit` (Number) - Maximum API calls per second.
 - `trace` (String) - Enable API trace logging.
+
+## Server Address
+
+By default, the provider starts the local Vault-compatible server on an ephemeral port of `127.0.0.1` (`server_addr = "127.0.0.1:0"`), so multiple Terraform processes can run on the same host at once. The provider sets `VAULT_AGENT_ADDR` to the actual listen address, and SOPS connects to it instead of the Vault address recorded in encrypted files. Files encrypted with `127.0.0.1:8200` (the address used by `sops-sakura-kms`) can be decrypted as before.
+
+If `server_addr` is set to a fixed port, the server listens on that address.
+
+**Note**: Since `VAULT_AGENT_ADDR` redirects all Vault requests in the provider process to the local server, this provider cannot decrypt files encrypted with a real HashiCorp Vault server.

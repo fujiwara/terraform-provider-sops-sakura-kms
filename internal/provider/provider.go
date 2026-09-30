@@ -15,6 +15,12 @@ import (
 	"github.com/sacloud/sacloud-sdk-go/common/saclient"
 )
 
+// defaultServerAddr is the default listen address for the local Vault-compatible server.
+// Port 0 lets the server listen on an ephemeral port so that multiple provider
+// processes can run at once. SOPS files are still encrypted with the address
+// 127.0.0.1:8200 (ssk.DefaultServerAddr).
+const defaultServerAddr = "127.0.0.1:0"
+
 var _ provider.Provider = &sskProvider{}
 var _ provider.ProviderWithEphemeralResources = &sskProvider{}
 
@@ -117,6 +123,14 @@ func lookupString(v types.String) (string, bool) {
 	return v.ValueString(), true
 }
 
+// resolveServerAddr returns the listen address for the local Vault-compatible server.
+func resolveServerAddr(v types.String) string {
+	if addr, ok := lookupString(v); ok && addr != "" {
+		return addr
+	}
+	return defaultServerAddr
+}
+
 func lookupInt64(v types.Int64) (int64, bool) {
 	if v.IsNull() || v.IsUnknown() {
 		return 0, false
@@ -155,8 +169,9 @@ func (p *sskProvider) Schema(_ context.Context, _ provider.SchemaRequest, resp *
 				Optional: true,
 			},
 			"server_addr": schema.StringAttribute{
-				Description: "Address for the local Vault-compatible server. Defaults to 127.0.0.1:8200.",
-				Optional:    true,
+				Description: "Address for the local Vault-compatible server. " +
+					"Defaults to 127.0.0.1:0 (an ephemeral port on 127.0.0.1).",
+				Optional: true,
 			},
 			"profile": schema.StringAttribute{
 				Description: "Profile name for shared credentials (~/.usacloud/<profile>/config.json).",
@@ -215,10 +230,7 @@ func (p *sskProvider) Configure(ctx context.Context, req provider.ConfigureReque
 	}
 
 	keyID, _ := lookupString(config.KeyID)
-	serverAddr := "127.0.0.1:8200"
-	if !config.ServerAddr.IsNull() && !config.ServerAddr.IsUnknown() {
-		serverAddr = config.ServerAddr.ValueString()
-	}
+	serverAddr := resolveServerAddr(config.ServerAddr)
 
 	// Build saclient.Client from provider config
 	var sc saclient.Client
